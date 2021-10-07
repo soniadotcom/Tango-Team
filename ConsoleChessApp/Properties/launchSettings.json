@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "ConsoleChessApp": {
+      "commandName": "Project"
+    }
+  }
+}
