@@ -6,76 +6,88 @@ namespace ConsoleChessApp
     {
         static Board myBoard = new Board(9);
 
-        static Player player1 = new Player(0, new Cell(8, 4));
+        static Player player1 = new Player(0, new Cell(8, 4), 'O');
 
-        static Player player2 = new Player(1, new Cell(0, 4));
-
+        static Player player2 = new Player(1, new Cell(0, 4), '■');
+        
         static Player winner;
 
         static Graph graph = new Graph(81);
 
+        static String gameMode;
+
+        static bool gameInProgress = true;
+
+        static int moveNumber = 1;
+
         static void Main(string[] args)
         {
 
-            for (int i = 0; i < 81; i++)
+            graph.addAllEdges();
+
+            ChooseGameMode();
+
+            ChoosePlayerNames();
+
+            Board.PutPlayerOnBoard(player1, myBoard);
+            Board.PutPlayerOnBoard(player2, myBoard);
+
+            while (gameInProgress)
             {
-                if (i - 9 >= 0)
+                Console.Clear();
+                
+                if (moveNumber % 2 == 1)
                 {
-                    graph.addEdge(i, i - 9);
+                    PrintMoveNumber(moveNumber, player1);
+                    myBoard.MarkLegalMoves(player1);
+                    PrintBoard(myBoard);
+
+                    PlayerMakesMove(player1);
+
+                    if (IsAWinner(player1))
+                        break;
                 }
-                if (i + 1 < 81 && i % 9 != 8)
+                else
                 {
-                    graph.addEdge(i, i + 1);
+                    PrintMoveNumber(moveNumber, player2);
+                    myBoard.MarkLegalMoves(player2);
+                    PrintBoard(myBoard);
+
+                    PlayerMakesMove(player2);
+
+                    if (IsAWinner(player2))
+                        break;
                 }
-                if (i + 9 < 81)
-                {
-                    graph.addEdge(i, i + 9);
-                }
-                if (i - 1 >= 0 && i % 9 != 0)
-                {
-                    graph.addEdge(i, i - 1);
-                }
+
+                moveNumber++;
             }
-            /*
-            graph.printGraph();
-            
-            graph.adjLists[7].Find(8).Value = 7; // стінка)
-            graph.adjLists[8].Find(7).Value = 8;
-            graph.adjLists[16].Find(17).Value = 16;
-            graph.adjLists[17].Find(16).Value = 17;
-            */
 
+            GameOver();
+        }
 
-            /*
-            graph.adjLists[53].Find(62).Value = 53;
-            graph.adjLists[62].Find(53).Value = 62;
-            graph.adjLists[61].Find(62).Value = 61;
-            graph.adjLists[62].Find(61).Value = 62;
-            graph.adjLists[71].Find(70).Value = 71;
-            graph.adjLists[70].Find(71).Value = 70;
-            
-            graph.adjLists[71].Find(80).Value = 71;
-            graph.adjLists[80].Find(71).Value = 80;
-            graph.printGraph();
-            */
-            //graph.CheckMoveCorrectness();
+        private static void GameOver()
+        {
+            Console.Clear();
+            PrintMoveNumber(moveNumber, winner);
+            PrintBoard(myBoard);
+            Console.WriteLine("\nGame Over");
+            Console.WriteLine("The Winner is: " + winner.Name);
 
+            Console.ReadLine();
+        }
 
-            //graph.PrintMoveCorrectness();
+        private static void ChoosePlayerNames()
+        {
+            if (gameMode == "players" || gameMode == "player" || gameMode == "Player" || gameMode == "Players" || gameMode == "PLAYERS")
+                SetPlayerNames();
+            else
+            {
+                SetPlayerName();
+            }
+        }
 
-            graph.BuildAWall(0, 1, 9, 10);
-            //graph.printGraph();
-            //Console.WriteLine(graph.CheckMoveCorrectness());
-
-            graph.BuildAWall(18, 9, 19, 10);
-            //graph.printGraph();
-            //Console.WriteLine(graph.CheckMoveCorrectness());
-
-
-
-
-            //Playing solo or against a Bot?
-
+        private static void ChooseGameMode()
+        {
             Console.WriteLine("Choose GameMode: \n");
             Console.WriteLine("   ____  U  ___ u _____          ____      _         _      __   __U _____ u   ____     ____     ");
             Console.WriteLine("U | __\")u \\/\"_ \\/|_ \" _|       U|  _\"\\ u  |\"|    U  /\"\\  u  \\ \\ / /\\| ___\"|/U |  _\"\\ u / __\"| u  ");
@@ -87,106 +99,52 @@ namespace ConsoleChessApp
             Console.WriteLine("\n");
 
             Console.WriteLine("GameMode:");
-            String gameMode = Console.ReadLine();
+            gameMode = Console.ReadLine();
+        }
 
-            if (gameMode == "players" || gameMode == "player" || gameMode == "Player" || gameMode == "Players" || gameMode == "PLAYERS")
-                setPlayerNames();
-            else
+        private static void PlayerMakesMove(Player player)
+        {
+            // If the player didn't move and he still has walls, let him build the wall
+            if (!SetNextCell(player) && player.Wall > 0)
+                SetNextWall(player);
+        }
+
+        private static void SetNextWall(Player player)
+        {
+            try
             {
-                setPlayerName();
-            }
-            PutPlayerOnBoard(player1);
-            PutPlayerOnBoard(player2);
+                Console.WriteLine("Input the first wall coordinate:");
+                int wall1 = int.Parse(Console.ReadLine());
 
-            bool gameInProgress = true;
-            int moveNumber = 1;
+                Console.WriteLine("Input the second wall coordinate:");
+                int wall2 = int.Parse(Console.ReadLine());
 
-            while (gameInProgress)
-            {
-                Console.Clear();
-
-
-                if (moveNumber % 2 == 1)
+                if (graph.BuildAWall(wall1, wall2)) // If the wall doesn't breaks the rules, we add it to the board
                 {
-                    PrintMoveNumber(moveNumber, player1);
-                    myBoard.MarkLegalMoves(player1);
-                    PrintBoard(myBoard);
-                    SetNextCell(player1);
-                    if (isAWinner(player1))
-                        break;
+                    player.Wall--;
+                    myBoard.DisplayWall(wall1, wall2);
                 }
                 else
                 {
-                    PrintMoveNumber(moveNumber, player2);
-                    myBoard.MarkLegalMoves(player2);
-                    PrintBoard(myBoard);
-                    SetNextCell(player2);
-                    if (isAWinner(player2))
-                        break;
+                    SetNextWall(player);
                 }
-
-                moveNumber++;
             }
-
-            Console.Clear();
-            PrintMoveNumber(moveNumber, winner);
-
-            Console.WriteLine("The Winner is: " + winner.Name);
-
-            PrintBoard(myBoard);
-
-            Console.ReadLine();
-
-        }
-
-        private static void setPlayerName()
-        {
-            Console.WriteLine("Enter player name:");
-            String playerName1 = Console.ReadLine();
-
-            player1.Name = playerName1;
-            player2.Name = "Bot";
-        }
-
-        private static void setPlayerNames()
-        {
-            Console.WriteLine("\nEnter the first player name:");
-            String playerName1 = Console.ReadLine();
-
-            Console.WriteLine("\nEnter the second player name:");
-            String playerName2 = Console.ReadLine();
-
-            player1.Name = playerName1;
-            player2.Name = playerName2;
-        }
-
-        private static bool isAWinner(Player player)
-        {
-            if ((player.Id == 0 && player.Cell.RowNumber == 0) ||
-                (player.Id == 1 && player.Cell.RowNumber == 8))
+            catch (Exception e)
             {
-                winner = player;
-                myBoard.ClearLegalMoves();
-                return true;
-            }
-            else
-            {
-                return false;
+                Console.WriteLine("Your input is incorrect. Try again");
+                SetNextWall(player);
             }
         }
 
-        private static void PrintMoveNumber(int i, Player player)
-        {
-            Console.WriteLine("Move #" + i + "\nPlayer: " + player.Name);
-        }
 
-        private static void PutPlayerOnBoard(Player player)
+
+        private static void PrintMoveNumber(int moveNumber, Player player)
         {
-            myBoard.theGrid[player.Cell.RowNumber, player.Cell.ColNumber].CurrentlyOccupied = true;
+            Console.WriteLine("Move #" + moveNumber + "\nPlayer: " + player.Name + "\nWalls: " + player.Wall);
         }
 
         //Makes move
-        private static void SetNextCell(Player player)
+        private static void SetNextCellRowAndCol(Player player)
         {
             myBoard.MarkLegalMoves(player);
             Console.WriteLine("Enter the next row number");
@@ -198,14 +156,38 @@ namespace ConsoleChessApp
             //Checking move
             if (CheckCoordinates(new Cell(nextRow, nextCol), player))
             {
-                SetNextCell(player);
+                SetNextCellRowAndCol(player);
+            }
+        }
+
+        private static bool SetNextCell(Player player)
+        {
+            myBoard.MarkLegalMoves(player);
+            Console.WriteLine("Enter next coordinate or press Enter to build the wall");
+            try
+            {
+                int number = int.Parse(Console.ReadLine());
+
+                //Checking move
+                if (CheckCoordinates(new Cell(number), player))
+                {
+                    SetNextCell(player);
+                    return true;
+                }
+                else
+                    return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("You decided not to move");
+                return false;
             }
         }
 
         //Checking whether the move is valid
         private static bool CheckCoordinates(Cell nextCell, Player player)
         {
-            if (myBoard.isSave(nextCell.RowNumber, nextCell.ColNumber) &&
+            if(myBoard.isSave(nextCell.RowNumber, nextCell.ColNumber) &&
                 myBoard.theGrid[nextCell.RowNumber, nextCell.ColNumber].LegalNextMove == true)
             {
                 myBoard.theGrid[player.Cell.RowNumber, player.Cell.ColNumber].CurrentlyOccupied = false;
@@ -220,44 +202,113 @@ namespace ConsoleChessApp
             }
         }
 
+
+        private static void SetPlayerName()
+        {
+            Console.WriteLine("Enter player name:");
+            String playerName1 = Console.ReadLine();
+
+            player1.Name = playerName1;
+            player2.Name = "Bot";
+        }
+
+        private static void SetPlayerNames()
+        {
+            Console.WriteLine("\nEnter the first player name:");
+            String playerName1 = Console.ReadLine();
+
+            Console.WriteLine("\nEnter the second player name:");
+            String playerName2 = Console.ReadLine();
+
+            player1.Name = playerName1;
+            player2.Name = playerName2;
+        }
+
+        private static bool IsAWinner(Player player)
+        {
+            Console.WriteLine(player.Name + " " + player.Cell.RowNumber);
+            if ((player.Id == 0 && player.Cell.ColNumber == 0) ||
+                (player.Id == 1 && player.Cell.ColNumber == 8))
+            {
+                winner = player;
+                myBoard.ClearLegalMoves();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private static void PrintBoard(Board myBoard)
         {
 
             Console.Write("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗");
-            for (int i = 0; i < myBoard.Size; i++)
+            for (int y = 0; y < myBoard.Size; y++)
             {
                 Console.Write("\n║");
-                for (int j = 0; j < myBoard.Size; j++)
+                for (int x = 0; x < myBoard.Size; x++)
                 {
-                    Cell c = myBoard.theGrid[i, j];
+                    Cell c = myBoard.theGrid[x, y];
 
                     if (c.CurrentlyOccupied == true)
                     {
-                        Console.Write(" O ║");
+                        if(c.ColNumber == player1.Cell.RowNumber &&
+                           c.RowNumber == player1.Cell.ColNumber)
+                            Console.Write(" " + player1.Symbol + " ");
+                        else
+                            Console.Write(" " + player2.Symbol + " ");
                     }
                     else if (c.LegalNextMove == true)
                     {
-                        Console.Write(" + ║");
+                        Console.Write(" + ");
                     }
                     else
                     {
-                        Console.Write("   ║");
+                        Console.Write("   ");
                     }
+
+                    if (myBoard.theGrid[x, y].VerticalWall == 1)
+                    {
+                        Console.Write("█");
+                    }
+                    else if (x < 8 && myBoard.theGrid[x, y].VerticalWall == 2)
+                    {
+                        Console.Write("█");
+                    }
+                    else
+                    {
+                        Console.Write("║");
+                    }
+
                 }
-                if (i < myBoard.Size - 1)
+                if (y< myBoard.Size - 1)
                 {
-                    Console.Write("\n╠═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╬═══╣");
+                    Console.Write("\n╠");
+                    for (int x = 0; x < myBoard.Size; x++)
+                    {
+                        if (myBoard.theGrid[x, y].HorizontalWall == 1)
+                            Console.Write("■■■");
+                        else if (myBoard.theGrid[x, y].HorizontalWall == 2)
+                            Console.Write("■■■");
+                        else
+                        Console.Write("═══");
+
+
+                        if (myBoard.theGrid[x, y].VerticalWall == 1 &&
+                            myBoard.theGrid[x, y + 1].VerticalWall == 2)
+                            Console.Write("█");
+                        else if (myBoard.theGrid[x, y].HorizontalWall == 1 &&
+                            myBoard.theGrid[x + 1, y].HorizontalWall == 2)
+                            Console.Write("■");
+                        else if (x < 8)
+                            Console.Write("╬");
+
+                    }
+                    Console.Write("╣");
                 }
             }
             Console.WriteLine("\n╚═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╝");
-            /*
-            Console.WriteLine("========================================");
-            Console.WriteLine("╔═══╦═══╦═══╗");
-            Console.WriteLine("║   ║ @ █   ║");
-            Console.WriteLine("╠═══╬═══█═══╣");
-            Console.WriteLine("║   ║ O █   ║");
-            Console.WriteLine("╚═══╩═══╩═══╝");
-            */
         }
     }
 }

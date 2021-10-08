@@ -138,27 +138,76 @@ namespace ConsoleChessApp
                 Console.WriteLine("\n0 " + result);
         }
 
-        public void BuildAWall(int a, int b, int c, int d)
+        public bool BuildAWall(int a, int b)
         {
-            adjLists[a].Find(b).Value = a;
-            adjLists[b].Find(a).Value = b;
-
-            adjLists[c].Find(d).Value = c;
-            adjLists[d].Find(c).Value = d;
-
-            if (CheckMoveCorrectness())
+            int c = 0, d = 0;
+            if (b - a == 9)
             {
-                Console.WriteLine("Wall " + a + " " + b + " " + c + " " + d + " is ready");
+                c = a + 1;
+                d = b + 1;
+            }
+            else if (b - a == 1)
+            {
+                c = a + 9;
+                d = b + 9;
             }
             else
             {
-                adjLists[a].Find(a).Value = b;
-                adjLists[b].Find(b).Value = a;
+                Console.WriteLine("Coordinates are wrong");
+                return false;
+            }
 
-                adjLists[c].Find(c).Value = d;
-                adjLists[d].Find(d).Value = c;
+            if(adjLists[a].Contains(b) && adjLists[b].Contains(a) ||
+               adjLists[c].Contains(d) && adjLists[d].Contains(c))
+            {
+                if ((a + 9 == b && a % 9 != 8) ||
+                    (a < 72 && a + 1 == b))
+                {
+                    if (adjLists[a].Contains(c) && adjLists[c].Contains(a)
+                    && adjLists[b].Contains(d) && adjLists[d].Contains(b))
+                    {
+                        adjLists[a].Find(c).Value = a;
+                        adjLists[c].Find(a).Value = c;
 
-                Console.WriteLine("Wall " + a + " " + b + " " + c + " " + d + " can't be placed here");
+                        adjLists[b].Find(d).Value = b;
+                        adjLists[d].Find(b).Value = d;
+                    }
+                    else
+                    {
+                        Console.WriteLine("The wall is already built");
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("You can't build here");
+                    return false;
+                }
+            }
+            else
+            {
+                Console.WriteLine("You can't build here");
+                return false;
+            }
+
+
+
+            if (CheckMoveCorrectness())
+            {
+                Console.WriteLine("Wall " + a + " " + b + " is ready");
+                return true;
+            }
+            else
+            {
+                adjLists[a].Find(a).Value = c;
+                adjLists[c].Find(c).Value = a;
+
+                adjLists[b].Find(b).Value = d;
+                adjLists[d].Find(d).Value = b;
+
+                Console.WriteLine("Wall " + a + " " + b + " can't be placed here");
+                return false;
             }
         }
     }
