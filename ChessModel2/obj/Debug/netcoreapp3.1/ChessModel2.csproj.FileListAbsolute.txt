@@ -1,0 +1,20 @@
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfoInputs.cache
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfo.cs
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.CoreCompileInputs.cache
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.deps.json
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.AssemblyReference.cache
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.deps.json
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.AssemblyReference.cache
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfoInputs.cache
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfo.cs
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.CoreCompileInputs.cache
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\source\repos\ConsoleChessApp2 - Copy\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.pdb
