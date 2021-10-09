@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sofiia.fedor_cience\\Desktop\\newnew\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {}
+    "C:\\Users\\VladySlavE\\source\\repos\\soniadotcom\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sofiia.fedor_cience\\Desktop\\newnew\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {
+    "C:\\Users\\VladySlavE\\source\\repos\\soniadotcom\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sofiia.fedor_cience\\Desktop\\newnew\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
+        "projectUniqueName": "C:\\Users\\VladySlavE\\source\\repos\\soniadotcom\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
         "projectName": "ChessModel2",
-        "projectPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\newnew\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
-        "packagesPath": "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\newnew\\Tango-Team\\ChessModel2\\obj\\",
+        "projectPath": "C:\\Users\\VladySlavE\\source\\repos\\soniadotcom\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
+        "packagesPath": "C:\\Users\\VladySlavE\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\VladySlavE\\source\\repos\\soniadotcom\\Tango-Team\\ChessModel2\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\sofiia.fedor_cience\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\VladySlavE\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

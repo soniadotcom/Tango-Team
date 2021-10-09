@@ -18,6 +18,8 @@ namespace ConsoleChessApp
             {
                 adjLists[i] = new LinkedList<int>();
             }
+
+            addAllEdges();
         }
 
         public void addAllEdges()
