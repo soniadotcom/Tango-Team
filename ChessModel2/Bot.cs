@@ -61,7 +61,7 @@ namespace ConsoleChessApp
             else if (wall1 % 8 != 0)
             {
                 wall2 = wall1 + 1;
-            } 
+            }
             else
             {
                 wall1--;

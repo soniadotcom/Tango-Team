@@ -1,9 +1,14 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\ChessModel2",
     "\\ConsoleChessApp2"
   ],
   "SelectedNode": "\\ChessModel2",
+=======
+    ""
+  ],
+>>>>>>> 3c6281b31c35c93247aae08fe6731372cc7045bf
   "PreviewInSolutionExplorer": false
 }

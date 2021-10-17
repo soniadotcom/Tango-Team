@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace ConsoleChessApp
 {
@@ -40,7 +42,7 @@ namespace ConsoleChessApp
             {
                 playerNames = Input.InputPlayerNames();
             }
-  
+
             Player[] players = Player.SetPlayerNames(playerNames);
 
             Board.PutPlayerOnBoard(players[0], myBoard);
@@ -70,7 +72,7 @@ namespace ConsoleChessApp
                     myBoard.MarkLegalMoves(players[1]);
                     View.PrintBoard(myBoard, players[0], players[1]);
 
-                    if(gamemode == "Bot")
+                    if (gamemode == "Bot")
                     {
                         Bot.BotMakesMove(players[1], myBoard, graph);
                     }

@@ -7,7 +7,7 @@ namespace ConsoleChessApp
     public class Player
     {
         public int Id { get; set; }
-        public Cell Cell{ get; set; }
+        public Cell Cell { get; set; }
         public String Name { get; set; }
         public int Wall { get; set; }
         public char Symbol { get; set; }
@@ -89,7 +89,7 @@ namespace ConsoleChessApp
 
 
         //Checking whether the move is valid
-        public static bool CheckCoordinates(Player player, Cell nextCell,Board myBoard)
+        public static bool CheckCoordinates(Player player, Cell nextCell, Board myBoard)
         {
             if (myBoard.isSave(nextCell.RowNumber, nextCell.ColNumber) &&
                 myBoard.theGrid[nextCell.RowNumber, nextCell.ColNumber].LegalNextMove == true)
