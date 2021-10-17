@@ -1,0 +1,17 @@
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ConsoleChessApp2.exe
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ConsoleChessApp2.deps.json
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ConsoleChessApp2.runtimeconfig.json
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ConsoleChessApp2.runtimeconfig.dev.json
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ConsoleChessApp2.dll
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ConsoleChessApp2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.csproj.AssemblyReference.cache
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.AssemblyInfoInputs.cache
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.AssemblyInfo.cs
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.csproj.CoreCompileInputs.cache
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.csproj.CopyComplete
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.dll
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\obj\Release\netcoreapp3.1\ConsoleChessApp2.genruntimeconfig.cache

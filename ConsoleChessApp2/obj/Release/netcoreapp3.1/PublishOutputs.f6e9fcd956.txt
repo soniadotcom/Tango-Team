@@ -1,0 +1,7 @@
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.exe
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.dll
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.deps.json
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.runtimeconfig.json
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\Desktop\final\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ChessModel2.pdb

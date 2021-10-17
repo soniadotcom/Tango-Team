@@ -18,6 +18,8 @@ namespace ConsoleChessApp
             {
                 adjLists[i] = new LinkedList<int>();
             }
+
+            addAllEdges();
         }
 
         public void addAllEdges()
@@ -46,27 +48,6 @@ namespace ConsoleChessApp
         public void addEdge (int src, int dest)
         {
             adjLists[src].AddLast(dest);
-        }
-
-        public void printGraph()
-        {
-            var mainNode = 0;
-            foreach(LinkedList<int> list in adjLists)
-            {
-                Console.WriteLine("\n" + mainNode + ":");
-                mainNode++;
-                LinkedListNode<int> node = list.First;
-                if (node != null)
-                {
-                    Console.Write(node.Value);
-
-                    for (int i = 0; i < list.Count - 1; i++)
-                    {
-                        Console.Write(" " + node.Next.Value);
-                        node = node.Next;
-                    }
-                }
-            }
         }
 
         public bool GoingThroughGraph(int s, int t)
@@ -157,39 +138,40 @@ namespace ConsoleChessApp
                 return false;
             }
 
-            if(adjLists[a].Contains(b) && adjLists[b].Contains(a) ||
-               adjLists[c].Contains(d) && adjLists[d].Contains(c))
-            {
-                if ((a + 9 == b && a % 9 != 8) ||
-                    (a < 72 && a + 1 == b))
+            if (a >= 0 && b >= 0 && c >= 0 && d >= 0)
+                if(adjLists[a].Contains(b) && adjLists[b].Contains(a) ||
+                   adjLists[c].Contains(d) && adjLists[d].Contains(c))
                 {
-                    if (adjLists[a].Contains(c) && adjLists[c].Contains(a)
-                    && adjLists[b].Contains(d) && adjLists[d].Contains(b))
+                    if ((a + 9 == b && a % 9 != 8) ||
+                        (a < 72 && a + 1 == b))
                     {
-                        adjLists[a].Find(c).Value = a;
-                        adjLists[c].Find(a).Value = c;
+                        if (adjLists[a].Contains(c) && adjLists[c].Contains(a)
+                        && adjLists[b].Contains(d) && adjLists[d].Contains(b))
+                        {
+                            adjLists[a].Find(c).Value = a;
+                            adjLists[c].Find(a).Value = c;
 
-                        adjLists[b].Find(d).Value = b;
-                        adjLists[d].Find(b).Value = d;
+                            adjLists[b].Find(d).Value = b;
+                            adjLists[d].Find(b).Value = d;
+                        }
+                        else
+                        {
+                            Console.WriteLine("The wall is already built");
+                            return false;
+                        }
+
                     }
                     else
                     {
-                        Console.WriteLine("The wall is already built");
+                        Console.WriteLine("You can't build here");
                         return false;
                     }
-
                 }
                 else
                 {
                     Console.WriteLine("You can't build here");
                     return false;
                 }
-            }
-            else
-            {
-                Console.WriteLine("You can't build here");
-                return false;
-            }
 
 
 
