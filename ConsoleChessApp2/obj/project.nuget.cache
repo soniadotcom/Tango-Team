@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D0kY8qlpvL1fYBi4Gb57li0rWYozsDElBYfCjthouQSWMkTIQ7KFdJV7OKdzYDUsG/qkzucIiLAalXNFCRbQvw==",
+  "dgSpecHash": "ONeQ2ThRTtagKJ9um7cwhaXbd+T7DtmD24QnkKelEi3RFk3yeNwMDpK+4f44pGXlhGRFYhJUdP8u9jJgasSWpA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\final\\Tango-Team\\ConsoleChessApp2\\ConsoleChessApp2.csproj",
+  "projectFilePath": "D:\\Tango-Team\\ConsoleChessApp2\\ConsoleChessApp2.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\sofiia.fedor_cience\\Desktop\\final\\Tango-Team\\ConsoleChessApp2\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

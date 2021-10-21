@@ -8,23 +8,23 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sofiia.fedor_cience\\Desktop\\final\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
+      "projectUniqueName": "D:\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
       "projectName": "ChessModel2",
-      "projectPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\final\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
-      "packagesPath": "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\final\\Tango-Team\\ChessModel2\\obj\\",
+      "projectPath": "D:\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\Tango-Team\\ChessModel2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\sofiia.fedor_cience\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -68,13 +68,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\sofiia.fedor_cience\\Desktop\\final\\Tango-Team\\ChessModel2\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
