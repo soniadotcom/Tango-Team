@@ -22,12 +22,12 @@ namespace ConsoleChessApp
 
         }
 
-        public static void PrintMoveNumber(int moveNumber, Player player)
+        public static void PrintMoveNumber(int moveNumber, IPlayer player)
         {
             Console.WriteLine("Move #" + moveNumber + "\nPlayer: " + player.Name + "\nWalls: " + player.Wall);
         }
 
-        public static void PrintBoard(Board myBoard, Player player1, Player player2)
+        public static void PrintBoard(Board myBoard, IPlayer player1, IPlayer player2)
         {
             int i = 0;
             Console.Write("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗");
@@ -100,7 +100,7 @@ namespace ConsoleChessApp
         }
 
 
-        public static void GameOver(int moveNumber, Player winner, Board myBoard, Player player1, Player player2)
+        public static void GameOver(int moveNumber, IPlayer winner, Board myBoard, IPlayer player1, IPlayer player2)
         {
             Console.Clear();
             PrintMoveNumber(moveNumber, winner);

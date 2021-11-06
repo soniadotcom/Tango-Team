@@ -80,5 +80,13 @@ namespace ConsoleChessApp
             Console.WriteLine("Press any key to continue:");
             Console.ReadLine();
         }
+
+
+        public static bool ChooseColor()
+        {
+            String color = Console.ReadLine();
+
+            return color.ToUpper() == "BLACK";
+        }
     }
 }

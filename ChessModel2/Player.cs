@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleChessApp
 {
-    public class Player
+    public class Player : IPlayer
     {
         public int Id { get; set; }
         public Cell Cell { get; set; }
@@ -26,25 +26,25 @@ namespace ConsoleChessApp
         }
 
 
-        public static void PlayerMakesMove(Player player, Board myBoard, Graph graph)
+        public static void PlayerMakesMove(IPlayer player, Board myBoard, Graph graph)
         {
             // If the player didn't move and he still has walls, let him build the wall
             if (!SetNextCell(player, myBoard) && player.Wall > 0)
                 SetNextWall(player, myBoard, graph);
         }
 
-        private static bool SetNextCell(Player player, Board myBoard)
+        private static bool SetNextCell(IPlayer player, Board myBoard)
         {
             myBoard.MarkLegalMoves(player);
 
 
-            Console.WriteLine("Enter next coordinate or press Enter to build the wall");
+            //Console.WriteLine("Enter next coordinate or press Enter to build the wall");
             try
             {
                 int number = int.Parse(Console.ReadLine());
 
                 //Checking move
-                if (CheckCoordinates(player, new Cell(number), myBoard))
+                if (IPlayer.CheckCoordinates(player, new Cell(number), myBoard))
                 {
                     SetNextCell(player, myBoard);
                     return true;
@@ -60,7 +60,7 @@ namespace ConsoleChessApp
         }
 
 
-        private static void SetNextWall(Player player, Board myBoard, Graph graph)
+        private static void SetNextWall(IPlayer player, Board myBoard, Graph graph)
         {
             try
             {
@@ -88,25 +88,8 @@ namespace ConsoleChessApp
         }
 
 
-        //Checking whether the move is valid
-        public static bool CheckCoordinates(Player player, Cell nextCell, Board myBoard)
-        {
-            if (myBoard.isSave(nextCell.RowNumber, nextCell.ColNumber) &&
-                myBoard.theGrid[nextCell.RowNumber, nextCell.ColNumber].LegalNextMove == true)
-            {
-                myBoard.theGrid[player.Cell.RowNumber, player.Cell.ColNumber].CurrentlyOccupied = false;
-                player.Cell = nextCell;
-                myBoard.theGrid[player.Cell.RowNumber, player.Cell.ColNumber].CurrentlyOccupied = true;
-                return false;
-            }
-            else
-            {
-                Console.WriteLine("Your move is not valid. Try another.");
-                return true;
-            }
-        }
 
-        public static Player[] SetPlayerNames(String[] playerNames)
+        public static IPlayer[] SetPlayerNames(String[] playerNames)
         {
 
             Player player1 = new Player(0, new Cell(8, 4), 'O');
@@ -115,7 +98,7 @@ namespace ConsoleChessApp
             player1.Name = playerNames[0];
             player2.Name = playerNames[1];
 
-            Player[] players = new Player[2];
+            IPlayer[] players = new IPlayer[2];
             players[0] = player1;
             players[1] = player2;
 
@@ -123,19 +106,77 @@ namespace ConsoleChessApp
         }
 
 
-        public static bool IsAWinner(Player player, Board myBoard)
+        public bool MakeNewMove(IPlayer player, Board myBoard, Graph graph, String input)
         {
-            Console.WriteLine(player.Name + " " + player.Cell.RowNumber);
-            if ((player.Id == 0 && player.Cell.ColNumber == 0) ||
-                (player.Id == 1 && player.Cell.ColNumber == 8))
+            myBoard.MarkLegalMoves(player);
+
+            try
             {
-                myBoard.ClearLegalMoves();
-                return true;
+
+                String command = input.Split(' ')[0];
+                String coordinate = input.Split(' ')[1];
+
+                Cell newCell;
+
+                switch (command.ToUpper())
+                {
+                    case "MOVE":
+                        //Console.WriteLine(newCell.Symbol1 + " " + newCell.Symbol2 + " " + newCell.Number + " " + newCell.ColNumber + " " + newCell.RowNumber);
+                        //Console.ReadLine();
+                        //Checking move
+                        newCell = new Cell(coordinate);
+                        IPlayer.CheckCoordinates(player, newCell, myBoard);
+                        return true;
+                    case "JUMP":
+
+                        newCell = new Cell(coordinate);
+                        IPlayer.CheckCoordinates(player, newCell, myBoard);
+                        return true;
+                    case "WALL":
+
+                        String Symbol1 = coordinate[0].ToString().ToUpper();
+                        String Symbol2 = coordinate[1].ToString();
+                        String wallPosition = coordinate[2].ToString();
+
+                        String[] letters = { "S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+                        int RowNumber = Array.IndexOf(letters, Symbol1);
+                        int ColNumber = int.Parse(Symbol2) - 1;
+                        int Number = RowNumber + ColNumber * 9;
+
+                        int a, b;
+
+                        a = Number;
+
+                        if (wallPosition.ToUpper() == "H")
+                        {
+                            b = Number + 1;
+                        }
+                        else
+                        {
+                            b = Number + 9;
+                        }
+
+                        if (graph.BuildAWall(a, b)) // If the wall doesn't breaks the rules, we add it to the board
+                        {
+                            player.Wall--;
+                            myBoard.DisplayWall(a, b);
+                        }
+                        else
+                        {
+                            MakeNewMove(player, myBoard, graph, input);
+                        }
+                        return true;
+                    default:
+                        return true;
+                }
             }
-            else
+            catch (Exception e)
             {
+                Console.WriteLine("Your input is not valid.");
                 return false;
             }
         }
+
     }
 }

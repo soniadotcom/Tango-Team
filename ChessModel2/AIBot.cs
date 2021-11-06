@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ConsoleChessApp
 {
-    public class Bot : IPlayer
+    public class AIBot : IPlayer
     {
         public int Id { get; set; }
         public Cell Cell { get; set; }
@@ -12,11 +12,11 @@ namespace ConsoleChessApp
         public int Wall { get; set; }
         public char Symbol { get; set; }
 
-        public Bot()
+        public AIBot()
         {
         }
 
-        public Bot(int id, Cell cell, char symbol)
+        public AIBot(int id, Cell cell, char symbol)
         {
             Id = id;
             Cell = cell;
@@ -24,7 +24,14 @@ namespace ConsoleChessApp
             Wall = 10;
         }
 
-        public static void PlayerMakesMove(IPlayer player, Board myBoard, Graph graph)
+
+        
+        public bool MakeNewMove(IPlayer player, Board myBoard, Graph graph, String input)
+        {
+            return true;
+        }
+
+        public static void PlayerMakesMove(Player player, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
@@ -34,7 +41,7 @@ namespace ConsoleChessApp
                 SetNextCell(player, myBoard);
         }
 
-        private static bool SetNextCell(IPlayer player, Board myBoard)
+        private static bool SetNextCell(Player player, Board myBoard)
         {
             List<Cell> legalMovesList = myBoard.MarkLegalMoves(player);
 
@@ -53,8 +60,7 @@ namespace ConsoleChessApp
                 return false;
         }
 
-
-        private static void SetNextWall(IPlayer player, Board myBoard, Graph graph)
+        private static void SetNextWall(Player player, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
@@ -86,7 +92,7 @@ namespace ConsoleChessApp
             }
         }
 
-        public static void BotMakesMove(IPlayer player, Board myBoard, Graph graph)
+        public static void BotMakesMove(Player player, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
@@ -94,22 +100,6 @@ namespace ConsoleChessApp
                 SetNextWall(player, myBoard, graph);
             else
                 SetNextCell(player, myBoard);
-        }
-
-
-        public bool MakeNewMove(IPlayer player, Board myBoard, Graph graph, String input)
-        {
-            Random random = new System.Random();
-
-            if (random.Next(2) >= 0.5 && player.Wall > 0)
-            {
-                SetNextWall(player, myBoard, graph);
-            }
-            else
-            {
-                SetNextCell(player, myBoard);
-            }
-            return true;
         }
     }
 }

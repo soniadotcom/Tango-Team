@@ -14,12 +14,17 @@ namespace ConsoleChessApp
         public int Number { get; set; }
         public bool CurrentlyOccupied { get; set; }
         public bool LegalNextMove { get; set; }
+        public String Symbol1 { get; set; }
+        public int Symbol2 { get; set; }
+
+        String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H","I"};
 
         public Cell(int x, int y)
         {
             ColNumber = x;
             RowNumber = y;
             Number = x + y * 9;
+
         }
 
         public Cell(int n)
@@ -27,6 +32,16 @@ namespace ConsoleChessApp
             Number = n;
             ColNumber = n / 9;
             RowNumber = n % 9;
+        }
+        public Cell(String coordinate)
+        {
+            Symbol1 = coordinate.Substring(0,1).ToUpper();
+            Symbol2 = int.Parse(coordinate.Substring(1));
+
+            RowNumber = Array.IndexOf(letters, Symbol1);
+            ColNumber = Symbol2 - 1;
+            Number = RowNumber + ColNumber * 9;
+
         }
     }
 }

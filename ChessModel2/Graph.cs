@@ -103,21 +103,6 @@ namespace ConsoleChessApp
             return true;
         }
 
-        public void PrintMoveCorrectness()
-        {
-            bool result = GoingThroughGraph(80, 0);
-            if (result)
-            {
-                Console.WriteLine("\n0 " + result);
-                for (int i = 1; i < 81; i++)
-                {
-                    result = GoingThroughGraph(0, i);
-                    Console.WriteLine(i + " " + result);
-                }
-            }
-            else
-                Console.WriteLine("\n0 " + result);
-        }
 
         public bool BuildAWall(int a, int b)
         {
@@ -177,7 +162,7 @@ namespace ConsoleChessApp
 
             if (CheckMoveCorrectness())
             {
-                Console.WriteLine("Wall " + a + " " + b + " is ready");
+                //Console.WriteLine("Wall " + a + " " + b + " is ready");
                 return true;
             }
             else

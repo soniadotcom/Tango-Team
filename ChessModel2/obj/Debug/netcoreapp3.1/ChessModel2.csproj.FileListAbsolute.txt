@@ -61,3 +61,13 @@ D:\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfo.cs
 D:\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.CoreCompileInputs.cache
 D:\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.dll
 D:\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.deps.json
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\bin\Debug\netcoreapp3.1\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.AssemblyReference.cache
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfoInputs.cache
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.AssemblyInfo.cs
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.csproj.CoreCompileInputs.cache
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.dll
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\ChessModel2\obj\Debug\netcoreapp3.1\ChessModel2.pdb
