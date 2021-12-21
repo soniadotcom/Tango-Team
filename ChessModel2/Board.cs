@@ -50,11 +50,12 @@ namespace ConsoleChessApp
                     }
                     else // Якщо за гравцем є стінка, тоді перевіряє чи клітинки під і над суперником перекриті стінками
                     {
-                        if (theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber - 1].HorizontalWall == 0)
-                        {
-                            theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber - 1].LegalNextMove = true; // Визначає клітинку під суперником легальною для ходу
-                            legalMovesList.Add(new Cell(player.Cell.RowNumber + 1, player.Cell.ColNumber - 1));
-                        }
+                        if(isSave(player.Cell.RowNumber + 1, player.Cell.ColNumber - 1))
+                            if (theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber - 1].HorizontalWall == 0)
+                            {
+                                theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber - 1].LegalNextMove = true; // Визначає клітинку під суперником легальною для ходу
+                                legalMovesList.Add(new Cell(player.Cell.RowNumber + 1, player.Cell.ColNumber - 1));
+                            }
                         if (theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber].HorizontalWall == 0)
                         {
                             theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber + 1].LegalNextMove = true; // Визначає клітинку над суперником легальною для ходу
@@ -73,7 +74,8 @@ namespace ConsoleChessApp
                 theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber].VerticalWall == 0)
                 if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber].CurrentlyOccupied)
                 {
-                    if (theGrid[player.Cell.RowNumber - 2, player.Cell.ColNumber].VerticalWall == 0)
+                    if (isSave(player.Cell.RowNumber - 2, player.Cell.ColNumber) && // ....
+                        theGrid[player.Cell.RowNumber - 2, player.Cell.ColNumber].VerticalWall == 0)
                     {
                         if (isSave(player.Cell.RowNumber - 2, player.Cell.ColNumber))
                         {
@@ -83,15 +85,21 @@ namespace ConsoleChessApp
                     }
                     else
                     {
-                        if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].HorizontalWall == 0)
+                        if (isSave(player.Cell.RowNumber - 1, player.Cell.ColNumber - 1))
                         {
-                            theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].LegalNextMove = true;
-                            legalMovesList.Add(new Cell(player.Cell.RowNumber - 1, player.Cell.ColNumber - 1));
-                        }
-                        if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber].HorizontalWall == 0)
-                        {
-                            theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber + 1].LegalNextMove = true;
-                            legalMovesList.Add(new Cell(player.Cell.RowNumber - 1, player.Cell.ColNumber + 1));
+                            if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].HorizontalWall == 0)
+                            {
+                                theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].LegalNextMove = true;
+                                legalMovesList.Add(new Cell(player.Cell.RowNumber - 1, player.Cell.ColNumber - 1));
+                            }
+                            if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber].HorizontalWall == 0)
+                            {
+                                if (isSave(player.Cell.RowNumber - 1, player.Cell.ColNumber + 1))
+                                {
+                                    theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber + 1].LegalNextMove = true;
+                                    legalMovesList.Add(new Cell(player.Cell.RowNumber - 1, player.Cell.ColNumber + 1));
+                                }
+                            }
                         }
                     }
 
@@ -119,8 +127,11 @@ namespace ConsoleChessApp
                     {
                         if (theGrid[player.Cell.RowNumber, player.Cell.ColNumber + 1].VerticalWall == 0)
                         {
-                            theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber + 1].LegalNextMove = true;
-                            legalMovesList.Add(new Cell(player.Cell.RowNumber + 1, player.Cell.ColNumber + 1));
+                            if(isSave(player.Cell.RowNumber + 1, player.Cell.ColNumber + 1))
+                            {
+                                theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber + 1].LegalNextMove = true;
+                                legalMovesList.Add(new Cell(player.Cell.RowNumber + 1, player.Cell.ColNumber + 1));
+                            }
                         }
                         if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber + 1].VerticalWall == 0)
                         {
@@ -141,7 +152,8 @@ namespace ConsoleChessApp
                 theGrid[player.Cell.RowNumber, player.Cell.ColNumber - 1].HorizontalWall == 0)
                 if (theGrid[player.Cell.RowNumber, player.Cell.ColNumber - 1].CurrentlyOccupied)
                 {
-                    if (theGrid[player.Cell.RowNumber, player.Cell.ColNumber - 2].HorizontalWall == 0)
+                    if (isSave(player.Cell.RowNumber, player.Cell.ColNumber - 2) && // ...
+                        theGrid[player.Cell.RowNumber, player.Cell.ColNumber - 2].HorizontalWall == 0)
                     {
                         if (isSave(player.Cell.RowNumber, player.Cell.ColNumber - 2))
                         {
@@ -151,15 +163,22 @@ namespace ConsoleChessApp
                     }
                     else
                     {
+
                         if (theGrid[player.Cell.RowNumber, player.Cell.ColNumber - 1].VerticalWall == 0)
                         {
-                            theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber - 1].LegalNextMove = true;
-                            legalMovesList.Add(new Cell(player.Cell.RowNumber + 1, player.Cell.ColNumber - 1));
+                            if (isSave(player.Cell.RowNumber + 1, player.Cell.ColNumber - 1))
+                            {
+                                theGrid[player.Cell.RowNumber + 1, player.Cell.ColNumber - 1].LegalNextMove = true;
+                                legalMovesList.Add(new Cell(player.Cell.RowNumber + 1, player.Cell.ColNumber - 1));
+                            }
                         }
-                        if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].VerticalWall == 0)
-                        { 
-                            theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].LegalNextMove = true;
-                            legalMovesList.Add(new Cell(player.Cell.RowNumber - 1, player.Cell.ColNumber - 1));
+                        if (isSave(player.Cell.RowNumber - 1, player.Cell.ColNumber - 1))
+                        {
+                            if (theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].VerticalWall == 0)
+                            {
+                                theGrid[player.Cell.RowNumber - 1, player.Cell.ColNumber - 1].LegalNextMove = true;
+                                legalMovesList.Add(new Cell(player.Cell.RowNumber - 1, player.Cell.ColNumber - 1));
+                            }
                         }
                     }
 
@@ -204,6 +223,17 @@ namespace ConsoleChessApp
                 for (int j = 0; j < Size; j++)
                 {
                     theGrid[i, j].LegalNextMove = false;
+                }
+            }
+        }
+
+        public void ClearCurrentlyOccupied()
+        {
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    theGrid[i, j].CurrentlyOccupied = false;
                 }
             }
         }

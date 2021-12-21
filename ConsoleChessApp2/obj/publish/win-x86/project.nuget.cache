@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "0D9OgyQn3NgCXe7lV2YuBftJPZVSEnLYvtR2/VkBfLTRx2TJptQm46toXN/aEtMNzC1yprlJ0Tyus8b0SfAkXw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\Tango-Team\\ConsoleChessApp2\\ConsoleChessApp2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\3.1.19\\microsoft.netcore.app.runtime.win-x86.3.1.19.nupkg.sha512",
+    "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\3.1.19\\microsoft.windowsdesktop.app.runtime.win-x86.3.1.19.nupkg.sha512",
+    "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\3.1.19\\microsoft.aspnetcore.app.runtime.win-x86.3.1.19.nupkg.sha512"
+  ],
+  "logs": []
+}

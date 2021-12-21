@@ -26,11 +26,11 @@ namespace ConsoleChessApp
         }
 
 
-        public static void PlayerMakesMove(IPlayer player, Board myBoard, Graph graph)
+        public static void PlayerMakesMove(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             // If the player didn't move and he still has walls, let him build the wall
             if (!SetNextCell(player, myBoard) && player.Wall > 0)
-                SetNextWall(player, myBoard, graph);
+                SetNextWall(player, opponent, myBoard, graph);
         }
 
         private static bool SetNextCell(IPlayer player, Board myBoard)
@@ -54,13 +54,13 @@ namespace ConsoleChessApp
             }
             catch (Exception e)
             {
-                Console.WriteLine("You decided not to move");
+                //Console.WriteLine("You decided not to move");
                 return false;
             }
         }
 
 
-        private static void SetNextWall(IPlayer player, Board myBoard, Graph graph)
+        private static void SetNextWall(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             try
             {
@@ -70,20 +70,20 @@ namespace ConsoleChessApp
                 Console.WriteLine("Input the second wall coordinate:");
                 int wall2 = int.Parse(Console.ReadLine());
 
-                if (graph.BuildAWall(wall1, wall2)) // If the wall doesn't breaks the rules, we add it to the board
+                if (graph.BuildAWall(wall1, wall2, player, opponent, myBoard)) // If the wall doesn't breaks the rules, we add it to the board
                 {
                     player.Wall--;
                     myBoard.DisplayWall(wall1, wall2);
                 }
                 else
                 {
-                    SetNextWall(player, myBoard, graph);
+                    SetNextWall(player, opponent, myBoard, graph);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Your input is incorrect. Try again");
-                SetNextWall(player, myBoard, graph);
+                SetNextWall(player, opponent, myBoard, graph);
             }
         }
 
@@ -106,12 +106,13 @@ namespace ConsoleChessApp
         }
 
 
-        public bool MakeNewMove(IPlayer player, Board myBoard, Graph graph, String input)
+        public bool MakeNewMove(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             myBoard.MarkLegalMoves(player);
 
             try
             {
+                String input = Console.ReadLine();
 
                 String command = input.Split(' ')[0];
                 String coordinate = input.Split(' ')[1];
@@ -121,9 +122,6 @@ namespace ConsoleChessApp
                 switch (command.ToUpper())
                 {
                     case "MOVE":
-                        //Console.WriteLine(newCell.Symbol1 + " " + newCell.Symbol2 + " " + newCell.Number + " " + newCell.ColNumber + " " + newCell.RowNumber);
-                        //Console.ReadLine();
-                        //Checking move
                         newCell = new Cell(coordinate);
                         IPlayer.CheckCoordinates(player, newCell, myBoard);
                         return true;
@@ -157,14 +155,14 @@ namespace ConsoleChessApp
                             b = Number + 9;
                         }
 
-                        if (graph.BuildAWall(a, b)) // If the wall doesn't breaks the rules, we add it to the board
+                        if (graph.BuildAWall(a, b, player, opponent, myBoard)) // If the wall doesn't breaks the rules, we add it to the board
                         {
                             player.Wall--;
                             myBoard.DisplayWall(a, b);
                         }
                         else
                         {
-                            MakeNewMove(player, myBoard, graph, input);
+                            MakeNewMove(player, opponent, myBoard, graph);
                         }
                         return true;
                     default:
@@ -173,7 +171,7 @@ namespace ConsoleChessApp
             }
             catch (Exception e)
             {
-                Console.WriteLine("Your input is not valid.");
+                //Console.WriteLine("Your input is not valid.");
                 return false;
             }
         }

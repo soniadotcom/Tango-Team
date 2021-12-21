@@ -1,0 +1,3 @@
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ChessModel2.pdb
+C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\Tango-Team\ConsoleChessApp2\bin\Release\netcoreapp3.1\publish\ConsoleChessApp2.exe

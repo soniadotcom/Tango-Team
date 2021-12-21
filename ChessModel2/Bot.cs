@@ -24,12 +24,12 @@ namespace ConsoleChessApp
             Wall = 10;
         }
 
-        public static void PlayerMakesMove(IPlayer player, Board myBoard, Graph graph)
+        public static void PlayerMakesMove(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
             if (random.Next(2) >= 0.5 && player.Wall > 0)
-                SetNextWall(player, myBoard, graph);
+                SetNextWall(player, opponent, myBoard, graph);
             else
                 SetNextCell(player, myBoard);
         }
@@ -54,7 +54,7 @@ namespace ConsoleChessApp
         }
 
 
-        private static void SetNextWall(IPlayer player, Board myBoard, Graph graph)
+        private static void SetNextWall(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
@@ -75,35 +75,35 @@ namespace ConsoleChessApp
                 wall2 = wall1 + 1;
             }
 
-            if (graph.BuildAWall(wall1, wall2)) // If the wall doesn't breaks the rules, we add it to the board
+            if (graph.BuildAWall(wall1, wall2, player, opponent, myBoard)) // If the wall doesn't breaks the rules, we add it to the board
             {
                 player.Wall--;
                 myBoard.DisplayWall(wall1, wall2);
             }
             else // Or trying to build the wall again
             {
-                SetNextWall(player, myBoard, graph);
+                SetNextWall(player, opponent, myBoard, graph);
             }
         }
 
-        public static void BotMakesMove(IPlayer player, Board myBoard, Graph graph)
+        public static void BotMakesMove(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
             if (random.Next(2) >= 0.5 && player.Wall > 0)
-                SetNextWall(player, myBoard, graph);
+                SetNextWall(player, opponent, myBoard, graph);
             else
                 SetNextCell(player, myBoard);
         }
 
 
-        public bool MakeNewMove(IPlayer player, Board myBoard, Graph graph, String input)
+        public bool MakeNewMove(IPlayer player, IPlayer opponent, Board myBoard, Graph graph)
         {
             Random random = new System.Random();
 
             if (random.Next(2) >= 0.5 && player.Wall > 0)
             {
-                SetNextWall(player, myBoard, graph);
+                SetNextWall(player, opponent, myBoard, graph);
             }
             else
             {

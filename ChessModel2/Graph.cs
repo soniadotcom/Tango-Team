@@ -88,23 +88,47 @@ namespace ConsoleChessApp
             return false;
         }
 
-        public bool CheckMoveCorrectness()
+        public bool CheckMoveCorrectness(IPlayer player, IPlayer opponent)
         {
-            bool result = GoingThroughGraph(80, 0);
-            if (!result)
-                return false;
 
-            for (int i = 1; i < 81; i++)
+            int numberWhite = player.Cell.Number;
+            int numberBlack = opponent.Cell.Number;
+
+
+            if(player.Id == 1)
             {
-                result = GoingThroughGraph(0, i);
-                if (!result)
-                    return false;
+                numberBlack = new Cell(player.Cell.RowNumber, player.Cell.ColNumber).Number;
+                numberWhite = new Cell(opponent.Cell.RowNumber, opponent.Cell.ColNumber).Number;
+                
+            } else
+            {
+                numberWhite = new Cell(player.Cell.RowNumber, player.Cell.ColNumber).Number;
+                numberBlack = new Cell(opponent.Cell.RowNumber, opponent.Cell.ColNumber).Number;
             }
-            return true;
+
+            bool black = false;
+            bool white = false;
+
+            for(int i = 0; i < 9; i++)
+            {
+                if (GoingThroughGraph(numberWhite, i)) {
+                    white = true;
+                }
+            }
+
+            for (int i = 80; i > 71; i--)
+            {
+                if (GoingThroughGraph(numberBlack, i))
+                {
+                    black = true;
+                }
+            }
+
+            return white && black;
         }
 
 
-        public bool BuildAWall(int a, int b)
+        public bool BuildAWall(int a, int b, IPlayer player, IPlayer opponent, Board myBoard)
         {
             int c = 0, d = 0;
             if (b - a == 9)
@@ -119,48 +143,49 @@ namespace ConsoleChessApp
             }
             else
             {
-                Console.WriteLine("Coordinates are wrong");
+                //Console.WriteLine("Coordinates are wrong");
                 return false;
             }
 
+            Cell aCell = new Cell(a);
+
             if (a >= 0 && b >= 0 && c >= 0 && d >= 0)
-                if(adjLists[a].Contains(b) && adjLists[b].Contains(a) ||
-                   adjLists[c].Contains(d) && adjLists[d].Contains(c))
+            {
+                if (a < 72 && a % 9 != 8)
                 {
-                    if ((a + 9 == b && a % 9 != 8) ||
-                        (a < 72 && a + 1 == b))
+                    if (adjLists[a].Contains(c) && adjLists[c].Contains(a) &&
+                        adjLists[b].Contains(d) && adjLists[d].Contains(b))
                     {
-                        if (adjLists[a].Contains(c) && adjLists[c].Contains(a)
-                        && adjLists[b].Contains(d) && adjLists[d].Contains(b))
+                        if (myBoard.theGrid[aCell.RowNumber, aCell.ColNumber].HorizontalWall != 1 &&
+                            myBoard.theGrid[aCell.RowNumber, aCell.ColNumber].VerticalWall != 1)
                         {
                             adjLists[a].Find(c).Value = a;
                             adjLists[c].Find(a).Value = c;
 
                             adjLists[b].Find(d).Value = b;
                             adjLists[d].Find(b).Value = d;
-                        }
+                        } 
                         else
                         {
-                            Console.WriteLine("The wall is already built");
                             return false;
                         }
-
                     }
                     else
                     {
-                        Console.WriteLine("You can't build here");
                         return false;
                     }
                 }
                 else
                 {
-                    Console.WriteLine("You can't build here");
                     return false;
                 }
+            }
+            else
+            {
+                return false;
+            }
 
-
-
-            if (CheckMoveCorrectness())
+            if (CheckMoveCorrectness(player, opponent))
             {
                 //Console.WriteLine("Wall " + a + " " + b + " is ready");
                 return true;
@@ -173,7 +198,7 @@ namespace ConsoleChessApp
                 adjLists[b].Find(b).Value = d;
                 adjLists[d].Find(d).Value = b;
 
-                Console.WriteLine("Wall " + a + " " + b + " can't be placed here");
+                //Console.WriteLine("Wall " + a + " " + b + " can't be placed here");
                 return false;
             }
         }

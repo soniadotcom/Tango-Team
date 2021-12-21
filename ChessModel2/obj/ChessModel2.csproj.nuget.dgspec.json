@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {}
+    "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {
+    "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\Tango-Team\\ChessModel2\\ChessModel2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
+        "projectUniqueName": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
         "projectName": "ChessModel2",
-        "projectPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
+        "projectPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\Tango-Team\\ChessModel2\\ChessModel2.csproj",
         "packagesPath": "C:\\Users\\sofiia.fedor_cience\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\ChessModel2\\obj\\",
+        "outputPath": "C:\\Users\\sofiia.fedor_cience\\Desktop\\Tango-Team\\Tango-Team\\ChessModel2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

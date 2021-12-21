@@ -25,6 +25,8 @@ namespace ConsoleChessApp
             RowNumber = y;
             Number = x + y * 9;
 
+            Symbol1 = letters.GetValue(x).ToString();
+            Symbol2 = y + 1;
         }
 
         public Cell(int n)

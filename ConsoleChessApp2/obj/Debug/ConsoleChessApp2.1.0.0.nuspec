@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>ConsoleChessApp2</id>
+    <version>1.0.0</version>
+    <authors>ConsoleChessApp2</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="ChessModel2" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\Tango-Team\ConsoleChessApp2\bin\Debug\netcoreapp3.1\ConsoleChessApp2.runtimeconfig.json" target="lib\netcoreapp3.1\ConsoleChessApp2.runtimeconfig.json" />
+    <file src="C:\Users\sofiia.fedor_cience\Desktop\Tango-Team\Tango-Team\ConsoleChessApp2\bin\Debug\netcoreapp3.1\ConsoleChessApp2.dll" target="lib\netcoreapp3.1\ConsoleChessApp2.dll" />
+  </files>
+</package>
